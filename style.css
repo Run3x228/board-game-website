@@ -13,7 +13,7 @@
 }
 #menu a {
   color: #fff;
-  padding: 10px 90px;
+  padding: 10px 150px;
   text-decoration: none;
   font-weight: bold;
   display: inline-block;
@@ -21,5 +21,26 @@
 }
 #menu a:hover {
   border-radius: 20px 5px;
-  background-color: #0066ff;
+  background-color: #0066ff; /* Эффекты для меню */
+}
+body {
+  background-color: rgb(13, 206, 254);
+  font-family: Comic Sans MS, Comic Sans, cursive; /* Синий фон + Шрифт */
+}
+img {
+  max-width: 20%;
+  max-height: 20%;
+  background: rgb(39, 40, 98);
+  border-radius: 30px;
+  padding:0.3%;
+}
+.Game2{
+  width: 40%;
+  border: 2px solid black;
+}
+.manchkin{
+  transition: transform 0.6s;
+}
+.manchkin:hover {
+transform:scale(1.02);
 }
