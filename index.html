@@ -1,26 +1,1008 @@
+
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="На данном сайте вы можете найти игры клуба настольных игр и их подробное описание"
-    />
-    <meta
-      name="keywords"
-      content="Куб, Настольные игры, Описание ,Клуб настольных игр"
-    />
-    <meta name="AUTOR" content="Run3x,Булочка с сосискою" />
-    <title>Настольные игры "Куб"</title>
-  </head>
-  <body>
-    <ul>
-      <li<a href=" ">Главная</a></li>
-      <li<a href=" ">Каталог игр</a></li>
-      <li<a href=" ">О нас</a></li>
-    </ul>
-    <h1>______</h1>
-    Алееееееее
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameSphere - Ультимативная Коллекция Настольных Игр</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --secondary: #8b5cf6;
+            --accent: #ec4899;
+            --dark: #1e293b;
+            --darker: #0f172a;
+            --light: #f8fafc;
+            --gray: #94a3b8;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--darker), var(--dark));
+            color: var(--light);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            height: 100vh;
+            background: radial-gradient(circle at top right, var(--primary), transparent 30%),
+                        radial-gradient(circle at bottom left, var(--secondary), transparent 30%),
+                        linear-gradient(to bottom, var(--darker), #1a1d3a);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, transparent 70%);
+            top: 10%;
+            left: 5%;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, transparent 70%);
+            bottom: 15%;
+            right: 10%;
+            animation: float 12s infinite ease-in-out reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(20px, 20px); }
+            50% { transform: translate(0, 40px); }
+            75% { transform: translate(-20px, 20px); }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px rgba(99, 102, 241, 0.5); }
+            to { text-shadow: 0 0 20px rgba(236, 72, 153, 0.8), 0 0 30px rgba(139, 92, 246, 0.6); }
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 90%;
+            margin-bottom: 2rem;
+            color: var(--gray);
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(99, 102, 241, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(99, 102, 241, 0.6);
+        }
+
+        .games-grid {
+            padding: 3rem 1rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .game-card {
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(99, 102, 241, 0.3);
+            border-color: var(--primary);
+        }
+
+        .game-image {
+            height: 150px;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.3s ease;
+        }
+
+        .game-card:hover .game-image {
+            transform: scale(1.05);
+        }
+
+        .game-content {
+            padding: 1.2rem;
+        }
+
+        .game-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--light);
+        }
+
+        .game-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--gray);
+            font-size: 0.8rem;
+            margin-bottom: 0.8rem;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+        }
+
+        .game-description {
+            color: var(--gray);
+            line-height: 1.5;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .game-rules {
+            background: rgba(139, 92, 246, 0.1);
+            padding: 0.8rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .game-rules h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .category-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin-bottom: 2rem;
+        }
+
+        .filter-btn {
+            background: rgba(30, 41, 59, 0.7);
+            color: var(--gray);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .search-bar {
+            max-width: 100%;
+            margin: 0 auto 2rem;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 0.8rem 1rem 0.8rem 2.5rem;
+            border-radius: 50px;
+            border: none;
+            background: rgba(30, 41, 59, 0.7);
+            color: white;
+            font-size: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .search-bar i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+        }
+
+        .floating-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+
+        .shape:nth-child(1) {
+            width: 150px;
+            height: 150px;
+            background: var(--primary);
+            top: 10%;
+            left: 5%;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .shape:nth-child(2) {
+            width: 100px;
+            height: 100px;
+            background: var(--secondary);
+            bottom: 20%;
+            right: 10%;
+            animation: float 18s infinite ease-in-out reverse;
+        }
+
+        .shape:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            background: var(--accent);
+            top: 40%;
+            right: 20%;
+            animation: float 15s infinite ease-in-out;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.5s ease;
+            padding: 1rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, var(--dark), var(--darker));
+            width: 100%;
+            max-width: 500px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            animation: slideIn 0.5s ease;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            height: 200px;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            background: var(--accent);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .modal-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: var(--gray);
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+        }
+
+        .modal-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+        }
+
+        .modal-rules {
+            background: rgba(139, 92, 246, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-rules h3 {
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .modal-rules p {
+            line-height: 1.6;
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .modal-difficulty {
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .difficulty-beginner { background: rgba(16, 185, 129, 0.2); color: #10b981; }
+        .difficulty-intermediate { background: rgba(245, 158, 11, 0.2); color: #f59e0b; }
+        .difficulty-expert { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+
+        .youtube-button {
+            background: #ff0000;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .youtube-button:hover {
+            background: #cc0000;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            background: rgba(15, 23, 42, 0.8);
+            padding: 2rem 1rem;
+            text-align: center;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        /* Mobile specific styles */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .game-meta {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .modal-header {
+                height: 180px;
+            }
+            
+            .modal-title {
+                font-size: 1.6rem;
+            }
+            
+            .modal-footer {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .modal-difficulty {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .youtube-button {
+                width: 100%;
+            }
+            
+            .category-filter {
+                gap: 0.5rem;
+            }
+            
+            .filter-btn {
+                padding: 0.3rem 0.8rem;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 1.5rem 0.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 0.9rem;
+            }
+            
+            .games-grid {
+                padding: 2rem 0.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .game-image {
+                height: 120px;
+            }
+            
+            .game-content {
+                padding: 1rem;
+            }
+            
+            .game-title {
+                font-size: 1.2rem;
+            }
+            
+            .modal-header {
+                height: 150px;
+            }
+            
+            .modal-body {
+                padding: 1rem;
+            }
+            
+            .modal-title {
+                font-size: 1.4rem;
+            }
+            
+            .modal-description {
+                font-size: 0.9rem;
+            }
+            
+            .search-bar input {
+                padding: 0.7rem 1rem 0.7rem 2.2rem;
+                font-size: 0.9rem;
+            }
+            
+            .search-bar i {
+                left: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <section class="hero">
+        <h1>Clube "CUBE"</h1>
+        <p>Откройте для себя ультимативную коллекцию настольных игр с захватывающими впечатлениями, детальными правилами и потрясающей графикой</p>
+        <button class="cta-button">Исследовать Игры</button>
+    </section>
+
+    <section class="games-grid">
+        <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Поиск игр...">
+        </div>
+
+        <div class="category-filter">
+            <button class="filter-btn active">Все</button>
+            <button class="filter-btn">Стратегия</button>
+            <button class="filter-btn">Кооператив</button>
+            <button class="filter-btn">Вечеринка</button>
+            <button class="filter-btn">Абстрактные</button>
+        </div>
+
+        <h2 class="section-title">Популярные Настольные Игры</h2>
+        
+        <div class="grid" id="gamesContainer">
+            <!-- Game cards will be generated by JavaScript -->
+        </div>
+    </section>
+
+    <div class="modal" id="gameModal">
+        <div class="modal-content">
+            <div class="modal-header" id="modalHeader">
+                <button class="modal-close" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <h2 class="modal-title" id="modalTitle"></h2>
+                <div class="modal-meta" id="modalMeta"></div>
+                <p class="modal-description" id="modalDescription"></p>
+                <div class="modal-rules">
+                    <h3>Как Играть</h3>
+                    <p id="modalRules"></p>
+                </div>
+                <div class="modal-footer">
+                    <div class="modal-difficulty" id="modalDifficulty"></div>
+                    <button class="youtube-button" id="youtubeButton">
+                        <i class="fab fa-youtube"></i>Видеообзор
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2023 GameSphere - Ультимативный Опыт Настольных Игр</p>
+    </footer>
+
+    <script>
+        // Russian game data with detailed descriptions
+        const games = [
+            {
+                id: 1,
+                title: "Шахматы",
+                category: "Стратегия",
+                players: "2",
+                duration: "30-60 мин",
+                difficulty: "Эксперт",
+                image: "https://placehold.co/800x400/6366f1/ffffff?text=Шахматы",
+                description: "Вечная игра стратегии, где две армии сражаются на клетчатом поле боя. Каждая фигура имеет уникальное движение и роль в захвате вражеского короля.",
+                rules: "Игроки поочередно передвигают по одной фигуре. Цель - поставить короля противника под атаку (шах) так, чтобы побег был невозможен (шах и мат)."
+            },
+            {
+                id: 2,
+                title: "Под settleры Катана",
+                category: "Стратегия",
+                players: "3-4",
+                duration: "60-90 мин",
+                difficulty: "Средний",
+                image: "https://placehold.co/800x400/8b5cf6/ffffff?text=Катан",
+                description: "Стройте поселения, торгуйте ресурсами и расширяйте свою цивилизацию на острове Катан. Стратегическое размещение и управление ресурсами определяют победителя.",
+                rules: "Игроки собирают ресурсы на основе бросков костей и шестиугольных плиток. Используйте ресурсы для строительства дорог, поселений и городов. Первый, кто наберет 10 очков победы, побеждает."
+            },
+            {
+                id: 3,
+                title: "Пандемия",
+                category: "Кооператив",
+                players: "2-4",
+                duration: "45-60 мин",
+                difficulty: "Средний",
+                image: "https://placehold.co/800x400/ec4899/ffffff?text=Пандемия",
+                description: "Работайте вместе как команда специалистов, чтобы спасти человечество от смертельных болезней, распространяющихся по всему миру. Сотрудничество необходимо для выживания.",
+                rules: "Игроки ходят по миру, лечат болезни. Если болезни распространяются слишком сильно или происходит слишком много вспышек, человечество проигрывает. Работайте вместе, чтобы найти лекарства."
+            },
+            {
+                id: 4,
+                title: "Билет на поезд",
+                category: "Стратегия",
+                players: "2-5",
+                duration: "30-60 мин",
+                difficulty: "Начинающий",
+                image: "https://placehold.co/800x400/6366f1/ffffff?text=Билет+на+поезд",
+                description: "Захватывайте железнодорожные пути по карте, чтобы выполнить билеты назначения и заработать очки. Простые правила с глубокими стратегическими решениями.",
+                rules: "Вытягивайте карты поездов, чтобы захватывать железнодорожные пути. Выполняйте билеты назначения для бонусных очков. Блокируйте противников, строя свою сеть."
+            },
+            {
+                id: 5,
+                title: "Кодовые имена",
+                category: "Вечеринка",
+                players: "4-8",
+                duration: "15-30 мин",
+                difficulty: "Начинающий",
+                image: "https://placehold.co/800x400/8b5cf6/ffffff?text=Кодовые+имена",
+                description: "Две команды соревнуются, чтобы идентифицировать своих агентов, используя однозначные подсказки. Креативное мышление и командная координация - ключ к победе.",
+                rules: "Шпионы дают однозначную подсказку с числом. Команды пытаются угадать свои цветные карты. Угадывание ассасина немедленно заканчивает игру."
+            },
+            {
+                id: 6,
+                title: "Азул",
+                category: "Абстрактные",
+                players: "2-4",
+                duration: "30-45 мин",
+                difficulty: "Средний",
+                image: "https://placehold.co/800x400/ec4899/ffffff?text=Азул",
+                description: "Прекрасная абстрактная игра, где игроки соревнуются, чтобы создать самую элегантную мозаику. Строительство паттернов с потрясающим визуальным appeal.",
+                rules: "Выбирайте плитки с фабрик, чтобы размещать на своей доске. Начисляйте очки за завершенные строки/столбцы и совпадающие цвета. Избегайте штрафов за неиспользованные плитки."
+            },
+            {
+                id: 7,
+                title: "Крылья",
+                category: "Стратегия",
+                players: "1-5",
+                duration: "40-70 мин",
+                difficulty: "Средний",
+                image: "https://placehold.co/800x400/6366f1/ffffff?text=Крылья",
+                description: "Прекрасно иллюстрированная игра-строитель двигатель о птицах. Каждая карта птицы имеет уникальные способности, которые активируются при игре.",
+                rules: "Используйте карты птиц, чтобы строить свою среду обитания и активировать их способности. Собирайте еду, откладывайте яйца и привлекайте больше птиц. Начисляйте очки за завершенные среды обитания и цели конца раунда."
+            },
+            {
+                id: 8,
+                title: "Блеск",
+                category: "Стратегия",
+                players: "2-4",
+                duration: "30 мин",
+                difficulty: "Начинающий",
+                image: "https://placehold.co/800x400/8b5cf6/ffffff?text=Блеск",
+                description: "Игра о сборе драгоценных камней, где игроки развивают шахты, покупают престижные карты и привлекают знатных особ для получения очков.",
+                rules: "Собирайте жетоны драгоценных камней, чтобы покупать карты развития. Карты обеспечивают постоянные скидки. Привлекайте знатных особ для бонусных очков. Первый, кто наберет 15 очков, побеждает."
+            },
+            {
+                id: 9,
+                title: "Диксит",
+                category: "Вечеринка",
+                players: "3-8",
+                duration: "30 мин",
+                difficulty: "Начинающий",
+                image: "https://placehold.co/800x400/ec4899/ffffff?text=Диксит",
+                description: "Игра воображения и интерпретации, где игроки рассказывают истории с красивыми иллюстрациями. Угадывайте, какую карту выбрал рассказчик.",
+                rules: "Рассказчик дает подсказку для одной из своих карт. Другие игроки выбирают карту, которая, по их мнению, соответствует подсказке. Очки начисляются за угадывание и за то, что никто или все угадали."
+            },
+            {
+                id: 10,
+                title: "Каркассон",
+                category: "Стратегия",
+                players: "2-5",
+                duration: "30-45 мин",
+                difficulty: "Средний",
+                image: "https://placehold.co/800x400/6366f1/ffffff?text=Каркассон",
+                description: "Стройте средневековую французскую деревню, размещая плитки и размещая миплов для захвата территорий. Классическая игра на стратегическое размещение.",
+                rules: "Размещайте плитки, чтобы строить города, дороги и поля. Размещайте миплов, чтобы захватывать территории. Зарабатывайте очки за завершенные и незавершенные структуры."
+            },
+            {
+                id: 11,
+                title: "7 чудес",
+                category: "Стратегия",
+                players: "2-7",
+                duration: "30 мин",
+                difficulty: "Средний",
+                image: "https://placehold.co/800x400/8b5cf6/ffffff?text=7+чудес",
+                description: "Развивайте свою цивилизацию от древности до эпохи Возрождения, строя чудеса света и развивая технологии. Быстрая стратегическая игра с множеством путей к победе.",
+                rules: "Выбирайте карты из руки, чтобы строить структуры и чудеса. Развивайте науку, военную мощь и торговлю. Начисляйте очки за архитектуру, науку, торговлю и военные победы."
+            },
+            {
+                id: 12,
+                title: "Тиккет",
+                category: "Вечеринка",
+                players: "4-10",
+                duration: "30-60 мин",
+                difficulty: "Начинающий",
+                image: "https://placehold.co/800x400/ec4899/ffffff?text=Тиккет",
+                description: "Игра на смех, где игроки получают тайные слова и должны заставить других угадать их, не называя слово напрямую.",
+                rules: "Один игрок дает подсказки, остальные угадывают. Игроки не могут использовать слова из загаданного слова или его формы. Команда, набравшая больше всего очков, побеждает."
+            },
+            {
+                id: 13,
+                title: "Госуны",
+                category: "Стратегия",
+                players: "2-4",
+                duration: "60-90 мин",
+                difficulty: "Эксперт",
+                image: "https://placehold.co/800x400/6366f1/ffffff?text=Госуны",
+                description: "Комплексная стратегическая игра о развитии японских провинций в эпоху Эдо. Глубокая экономическая система и сложные решения.",
+                rules: "Управляйте ресурсами, развивайте провинции и управляйте политикой. Влияйте на императора и контролируйте рынки. Балансируйте между экономическим и политическим влиянием."
+            },
+            {
+                id: 14,
+                title: "Домино",
+                category: "Абстрактные",
+                players: "2-4",
+                duration: "15-30 мин",
+                difficulty: "Начинающий",
+                image: "https://placehold.co/800x400/8b5cf6/ffffff?text=Домино",
+                description: "Классическая игра на сопоставление, где игроки соревнуются, чтобы избавиться от всех своих костей. Простая механика с глубокой стратегией.",
+                rules: "Совмещайте кости с совпадающими числами. Игрок, который первым избавится от всех костей, побеждает. Зарабатывайте очки за оставшиеся кости у противников."
+            },
+            {
+                id: 15,
+                title: "Колонизаторы",
+                category: "Стратегия",
+                players: "3-4",
+                duration: "90-120 мин",
+                difficulty: "Эксперт",
+                image: "https://placehold.co/800x400/ec4899/ffffff?text=Колонизаторы",
+                description: "Расширенная версия Под settleры Катана с дополнительными правилами и возможностями. Глубокая экономическая и стратегическая игра.",
+                rules: "Включает дополнительные элементы: рыцарей, города, развитие и торговые пути. Более сложные взаимодействия и стратегические возможности."
+            },
+            {
+                id: 16,
+                title: "Манчкин",
+                category: "Вечеринка",
+                players: "3-6",
+                duration: "90-120 мин",
+                difficulty: "Начинающий",
+                image: "https://placehold.co/800x400/6366f1/ffffff?text=Манчкин",
+                description: "Сатирическая ролевая игра, где игроки сражаются с монстрами и проклинют друг друга. Юмор и предательство в каждой игре.",
+                rules: "Поднимайтесь в уровнях, побеждая монстров. Используйте карты для усиления себя или ослабления других. Первый, кто достигнет 10 уровня, побеждает."
+            },
+            {
+                id: 17,
+                title: "Танки",
+                category: "Абстрактные",
+                players: "2-4",
+                duration: "60-90 мин",
+                difficulty: "Средний",
+                image: "https://placehold.co/800x400/8b5cf6/ffffff?text=Танки",
+                description: "Имитация танкового боя с точной системой управления и стратегией. Планируйте свои движения и уничтожайте вражеские танки.",
+                rules: "Управляйте танками с ограниченным топливом. Используйте различные типы снарядов и тактические приемы. Последний оставшийся танк побеждает."
+            },
+            {
+                id: 18,
+                title: "Каркас",
+                category: "Абстрактные",
+                players: "2",
+                duration: "20-30 мин",
+                difficulty: "Эксперт",
+                image: "https://placehold.co/800x400/ec4899/ffffff?text=Каркас",
+                description: "Абстрактная стратегическая игра на доске 4x4, где игроки строят каркас из плиток. Глубокая стратегия в маленькой коробке.",
+                rules: "Размещайте плитки, чтобы формировать пути и захватывать территории. Контролируйте ключевые позиции на доске. Игра заканчивается, когда доска заполнена."
+            }
+        ];
+
+        // Function to render game cards
+        function renderGames(gamesToRender) {
+            const container = document.getElementById('gamesContainer');
+            container.innerHTML = '';
+            
+            gamesToRender.forEach(game => {
+                const card = document.createElement('div');
+                card.className = 'game-card';
+                card.innerHTML = `
+                    <div class="game-image" style="background-image: url('${game.image}')"></div>
+                    <div class="game-content">
+                        <h3 class="game-title">${game.title}</h3>
+                        <div class="game-meta">
+                            <span><i class="fas fa-users"></i> ${game.players} игроков</span>
+                            <span><i class="fas fa-clock"></i> ${game.duration}</span>
+                            <span class="category">${game.category}</span>
+                        </div>
+                        <p class="game-description">${game.description}</p>
+                        <div class="game-rules">
+                            <h4>Как Играть</h4>
+                            <p>${game.rules}</p>
+                        </div>
+                    </div>
+                `;
+                
+                // Add click event to open modal
+                card.addEventListener('click', () => openModal(game));
+                
+                container.appendChild(card);
+            });
+        }
+
+        // Modal functionality
+        function openModal(game) {
+            document.getElementById('modalHeader').style.backgroundImage = `url('${game.image}')`;
+            document.getElementById('modalTitle').textContent = game.title;
+            document.getElementById('modalMeta').innerHTML = `
+                <span><i class="fas fa-users"></i> ${game.players} игроков</span>
+                <span><i class="fas fa-clock"></i> ${game.duration}</span>
+                <span class="category">${game.category}</span>
+            `;
+            document.getElementById('modalDescription').textContent = game.description;
+            document.getElementById('modalRules').textContent = game.rules;
+            
+            // Set difficulty class
+            const difficultyElement = document.getElementById('modalDifficulty');
+            difficultyElement.textContent = game.difficulty;
+            difficultyElement.className = 'modal-difficulty';
+            
+            if (game.difficulty === 'Начинающий') {
+                difficultyElement.classList.add('difficulty-beginner');
+            } else if (game.difficulty === 'Средний') {
+                difficultyElement.classList.add('difficulty-intermediate');
+            } else {
+                difficultyElement.classList.add('difficulty-expert');
+            }
+            
+            // Set YouTube button functionality
+            document.getElementById('youtubeButton').onclick = () => {
+                window.open(`https://www.youtube.com/results?search_query=${encodeURIComponent(game.title + ' настольная игра')}`, '_blank');
+            };
+            
+            document.getElementById('gameModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        // Close modal
+        document.getElementById('closeModal').addEventListener('click', closeModal);
+        document.getElementById('gameModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        function closeModal() {
+            document.getElementById('gameModal').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+
+        // Initial render
+        renderGames(games);
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filteredGames = games.filter(game => 
+                game.title.toLowerCase().includes(searchTerm) || 
+                game.description.toLowerCase().includes(searchTerm) ||
+                game.category.toLowerCase().includes(searchTerm)
+            );
+            renderGames(filteredGames);
+        });
+
+        // Category filtering
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const category = button.textContent;
+                let filteredGames;
+                
+                if (category === 'Все') {
+                    filteredGames = games;
+                } else {
+                    filteredGames = games.filter(game => game.category === category);
+                }
+                
+                renderGames(filteredGames);
+            });
+        });
+
+        // Hero button scroll to games
+        document.querySelector('.cta-button').addEventListener('click', () => {
+            document.querySelector('.games-grid').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Add animation to game cards when they come into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        // Add animation properties to game cards
+        document.querySelectorAll('.game-card').forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
 </html>
